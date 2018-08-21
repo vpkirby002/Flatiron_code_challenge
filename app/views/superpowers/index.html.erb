@@ -1,12 +1,27 @@
-<h2>All Superpowers</h2>
+<p id="notice"><%= notice %></p>
 
-<ul>
-  <% @superpowers.each do |superpower| %>
-    <li>
-      <%= superpower.name %>
-      <br>
-      Description: <%= superpower.description %>
-    </li>
-    <br>
-  <% end %>
-</ul>
+<h1>Superpowers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @superpowers.each do |superpower| %>
+      <tr>
+        <td><%= superpower.name %></td>
+        <td><%= link_to 'Show', superpower %></td>
+        <td><%= link_to 'Edit', edit_superpower_path(superpower) %></td>
+        <td><%= link_to 'Destroy', superpower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Superpower', new_superpower_path %>
